@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FPm-Ys-JTQ">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Image List View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ImageListViewController" customModule="ImageFeed_Storyboard" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,6 +50,9 @@
                                                     </constraints>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="HeartOn"/>
+                                                    <connections>
+                                                        <action selector="likeAction:" destination="CBk-Df-oKr" eventType="touchUpInside" id="Jwu-iA-AEV"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" name="bgColor"/>
@@ -66,9 +69,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="CellImage" destination="y9P-Gi-PEZ" id="j42-o4-EdW"/>
-                                            <outlet property="CellLabel" destination="KJC-iq-oob" id="RbC-Eu-MAv"/>
-                                            <outlet property="LikeButton" destination="aIH-o0-BGj" id="9NM-58-DY2"/>
+                                            <outlet property="cellImage" destination="y9P-Gi-PEZ" id="cyl-qg-vgf"/>
+                                            <outlet property="dateLabel" destination="KJC-iq-oob" id="euS-h8-Njq"/>
+                                            <outlet property="likeButton" destination="aIH-o0-BGj" id="LQe-Sn-jPh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -87,6 +90,7 @@
                             <constraint firstItem="Qwb-UW-5cs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xig-yi-5Ua"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="Lgg-Zc-2fU"/>
                     <connections>
                         <outlet property="tableView" destination="Qwb-UW-5cs" id="2vM-oS-6Vr"/>
                     </connections>
@@ -95,10 +99,81 @@
             </objects>
             <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
         </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="Xth-zV-gIF">
+            <objects>
+                <viewController id="FPm-Ys-JTQ" customClass="ProfileViewController" customModule="ImageFeed_Storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QyA-eS-rnx">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Екатерина Новикова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRl-n3-fgH">
+                                <rect key="frame" x="16" y="169" width="228" height="28"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="23"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ekaterina_nov" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsG-gL-o8W">
+                                <rect key="frame" x="16" y="205" width="97" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.68235294117647061" green="0.68627450980392157" blue="0.70588235294117641" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5K-Gb-1hk">
+                                <rect key="frame" x="329" y="107" width="48" height="38"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Exit"/>
+                                <connections>
+                                    <action selector="exitAction:" destination="FPm-Ys-JTQ" eventType="touchUpInside" id="8Xp-2L-VPR"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Userpic" translatesAutoresizingMaskIntoConstraints="NO" id="y7h-TL-dWS">
+                                <rect key="frame" x="16" y="91" width="70" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="N5Y-m4-chf"/>
+                                    <constraint firstAttribute="width" secondItem="y7h-TL-dWS" secondAttribute="height" multiplier="1:1" id="TLg-tf-l1d"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello, World!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w53-Ru-TQi">
+                                <rect key="frame" x="16" y="229" width="78" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="m1q-Ec-aLc"/>
+                        <color key="backgroundColor" name="bgColor"/>
+                        <constraints>
+                            <constraint firstItem="q5K-Gb-1hk" firstAttribute="centerY" secondItem="y7h-TL-dWS" secondAttribute="centerY" id="1g1-aa-UH5"/>
+                            <constraint firstItem="vsG-gL-o8W" firstAttribute="top" secondItem="VRl-n3-fgH" secondAttribute="bottom" constant="8" id="6dv-XC-IHS"/>
+                            <constraint firstItem="VRl-n3-fgH" firstAttribute="top" secondItem="y7h-TL-dWS" secondAttribute="bottom" constant="8" id="C77-ae-Kn3"/>
+                            <constraint firstItem="w53-Ru-TQi" firstAttribute="leading" secondItem="m1q-Ec-aLc" secondAttribute="leading" constant="16" id="Dve-di-zFl"/>
+                            <constraint firstItem="y7h-TL-dWS" firstAttribute="leading" secondItem="m1q-Ec-aLc" secondAttribute="leading" constant="16" id="Jjb-41-PAr"/>
+                            <constraint firstItem="y7h-TL-dWS" firstAttribute="top" secondItem="m1q-Ec-aLc" secondAttribute="top" constant="32" id="LDc-KB-aOz"/>
+                            <constraint firstItem="vsG-gL-o8W" firstAttribute="leading" secondItem="m1q-Ec-aLc" secondAttribute="leading" constant="16" id="R0I-BZ-rWs"/>
+                            <constraint firstItem="w53-Ru-TQi" firstAttribute="top" secondItem="vsG-gL-o8W" secondAttribute="bottom" constant="8" id="RoL-HO-Vse"/>
+                            <constraint firstItem="m1q-Ec-aLc" firstAttribute="trailing" secondItem="q5K-Gb-1hk" secondAttribute="trailing" constant="16" id="mTh-DB-a4q"/>
+                            <constraint firstItem="VRl-n3-fgH" firstAttribute="leading" secondItem="m1q-Ec-aLc" secondAttribute="leading" constant="16" id="nxJ-UD-gUC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="w53-Ru-TQi" id="1tj-Ai-6fR"/>
+                        <outlet property="emailLabel" destination="vsG-gL-o8W" id="vMa-od-oY1"/>
+                        <outlet property="exitButton" destination="q5K-Gb-1hk" id="G4E-2q-6sK"/>
+                        <outlet property="nameLabel" destination="VRl-n3-fgH" id="NLR-NP-LwS"/>
+                        <outlet property="profilePic" destination="y7h-TL-dWS" id="w4A-K0-5QP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acu-SU-qKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="82" y="661"/>
+        </scene>
     </scenes>
     <resources>
         <image name="0" width="1600" height="1059"/>
+        <image name="Exit" width="24" height="24"/>
         <image name="HeartOn" width="42" height="42"/>
+        <image name="Userpic" width="70" height="70"/>
         <namedColor name="bgColor">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

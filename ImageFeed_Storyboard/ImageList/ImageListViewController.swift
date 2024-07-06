@@ -26,7 +26,7 @@ class ImageListViewController: UIViewController {
         }
         cell.cellImage.image = image
         let date = Date()
-        cell.cellLabel.text = date.dateTimeString
+        cell.dateLabel.text = date.dateTimeString
         
         let isLiked = indexPath.row % 2 == 0
         let likedImage = isLiked ? UIImage(named: "HeartOn") : UIImage(named: "HeartOff")
