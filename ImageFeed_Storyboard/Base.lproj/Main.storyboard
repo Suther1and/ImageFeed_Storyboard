@@ -210,6 +210,9 @@
                                 </subviews>
                                 <viewLayoutGuide key="contentLayoutGuide" id="ej5-wZ-dFW"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="6TA-dA-pxr"/>
+                                <connections>
+                                    <outlet property="delegate" destination="jeh-V7-L3a" id="GSk-4f-gAQ"/>
+                                </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-Ku-xOT">
                                 <rect key="frame" x="8" y="8" width="48" height="48"/>
@@ -223,12 +226,26 @@
                                     <action selector="backButtonAction:" destination="jeh-V7-L3a" eventType="touchUpInside" id="ENk-nb-Sfx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K8c-RL-Wfx" userLabel="ShareButton">
+                                <rect key="frame" x="172.66666666666666" y="785" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="FyE-dA-pdN"/>
+                                    <constraint firstAttribute="height" constant="50" id="hkA-hk-Jdv"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Sharing"/>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="jeh-V7-L3a" eventType="touchUpInside" id="yVl-Qh-eja"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="48S-we-gmg"/>
                         <color key="backgroundColor" name="bgColor"/>
                         <constraints>
                             <constraint firstItem="Cwh-4q-hr1" firstAttribute="leading" secondItem="48S-we-gmg" secondAttribute="leading" id="1Db-ji-WwK"/>
                             <constraint firstItem="Cwh-4q-hr1" firstAttribute="top" secondItem="Cs4-1Q-Vpt" secondAttribute="top" id="D1f-fN-Szt"/>
+                            <constraint firstItem="48S-we-gmg" firstAttribute="bottom" secondItem="K8c-RL-Wfx" secondAttribute="bottom" constant="17" id="GYY-xH-Yem"/>
+                            <constraint firstItem="K8c-RL-Wfx" firstAttribute="centerX" secondItem="48S-we-gmg" secondAttribute="centerX" constant="1" id="P5x-Oa-nxJ"/>
                             <constraint firstAttribute="bottom" secondItem="Cwh-4q-hr1" secondAttribute="bottom" id="T5K-hp-ivQ"/>
                             <constraint firstItem="w8d-Ku-xOT" firstAttribute="leading" secondItem="48S-we-gmg" secondAttribute="leading" constant="8" id="U7y-Dm-YIx"/>
                             <constraint firstItem="48S-we-gmg" firstAttribute="trailing" secondItem="Cwh-4q-hr1" secondAttribute="trailing" id="Wc4-Tq-dze"/>
@@ -237,6 +254,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YgR-1O-MbI"/>
                     <connections>
+                        <outlet property="scrollView" destination="Cwh-4q-hr1" id="aNU-QQ-jRH"/>
                         <outlet property="singleImageView" destination="WcR-Tj-kdP" id="WUV-fC-unj"/>
                     </connections>
                 </viewController>
@@ -275,10 +293,11 @@
         <image name="Exit" width="24" height="24"/>
         <image name="HeartOn" width="42" height="42"/>
         <image name="ProfileA" width="30" height="30"/>
+        <image name="Sharing" width="51" height="51"/>
         <image name="TableA" width="30" height="30"/>
         <image name="Userpic" width="70" height="70"/>
         <namedColor name="bgColor">
-            <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>
