@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="FPm-Ys-JTQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DAw-xb-wtl">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Image List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ImageListViewController" customModule="ImageFeed_Storyboard" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +90,7 @@
                             <constraint firstItem="Qwb-UW-5cs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xig-yi-5Ua"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Lgg-Zc-2fU"/>
+                    <tabBarItem key="tabBarItem" title="" image="TableA" id="Lgg-Zc-2fU"/>
                     <connections>
                         <outlet property="tableView" destination="Qwb-UW-5cs" id="2vM-oS-6Vr"/>
                     </connections>
@@ -98,6 +98,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="FHY-z9-Xva">
+            <objects>
+                <tabBarController id="DAw-xb-wtl" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rS2-Rz-6s3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="qMj-BK-eVq"/>
+                        <segue destination="FPm-Ys-JTQ" kind="relationship" relationship="viewControllers" id="ZZY-7M-X0Z"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1v3-Jz-hzT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-944" y="177"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="Xth-zV-gIF">
@@ -156,6 +174,7 @@
                             <constraint firstItem="VRl-n3-fgH" firstAttribute="leading" secondItem="m1q-Ec-aLc" secondAttribute="leading" constant="16" id="nxJ-UD-gUC"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="ProfileA" id="84z-qd-guf"/>
                     <connections>
                         <outlet property="descriptionLabel" destination="w53-Ru-TQi" id="1tj-Ai-6fR"/>
                         <outlet property="emailLabel" destination="vsG-gL-o8W" id="vMa-od-oY1"/>
@@ -173,6 +192,8 @@
         <image name="0" width="1600" height="1059"/>
         <image name="Exit" width="24" height="24"/>
         <image name="HeartOn" width="42" height="42"/>
+        <image name="ProfileA" width="30" height="30"/>
+        <image name="TableA" width="30" height="30"/>
         <image name="Userpic" width="70" height="70"/>
         <namedColor name="bgColor">
             <color red="0.10196078431372549" green="0.10588235294117647" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
