@@ -200,9 +200,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WcR-Tj-kdP">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cwh-4q-hr1">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WcR-Tj-kdP">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ej5-wZ-dFW"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="6TA-dA-pxr"/>
+                            </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-Ku-xOT">
                                 <rect key="frame" x="8" y="8" width="48" height="48"/>
                                 <constraints>
@@ -219,12 +227,12 @@
                         <viewLayoutGuide key="safeArea" id="48S-we-gmg"/>
                         <color key="backgroundColor" name="bgColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="WcR-Tj-kdP" secondAttribute="trailing" id="QYM-dF-i6I"/>
-                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="bottom" secondItem="Cs4-1Q-Vpt" secondAttribute="bottom" id="TVe-KN-KRo"/>
-                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="leading" secondItem="Cs4-1Q-Vpt" secondAttribute="leading" id="TcR-L6-lDg"/>
+                            <constraint firstItem="Cwh-4q-hr1" firstAttribute="leading" secondItem="48S-we-gmg" secondAttribute="leading" id="1Db-ji-WwK"/>
+                            <constraint firstItem="Cwh-4q-hr1" firstAttribute="top" secondItem="Cs4-1Q-Vpt" secondAttribute="top" id="D1f-fN-Szt"/>
+                            <constraint firstAttribute="bottom" secondItem="Cwh-4q-hr1" secondAttribute="bottom" id="T5K-hp-ivQ"/>
                             <constraint firstItem="w8d-Ku-xOT" firstAttribute="leading" secondItem="48S-we-gmg" secondAttribute="leading" constant="8" id="U7y-Dm-YIx"/>
+                            <constraint firstItem="48S-we-gmg" firstAttribute="trailing" secondItem="Cwh-4q-hr1" secondAttribute="trailing" id="Wc4-Tq-dze"/>
                             <constraint firstItem="w8d-Ku-xOT" firstAttribute="top" secondItem="48S-we-gmg" secondAttribute="top" constant="8" id="ZW3-8j-w9O"/>
-                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="top" secondItem="Cs4-1Q-Vpt" secondAttribute="top" id="eCN-MA-iU3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YgR-1O-MbI"/>
