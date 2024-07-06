@@ -93,7 +93,7 @@
                     <navigationItem key="navigationItem" id="aey-e1-xsc"/>
                     <connections>
                         <outlet property="tableView" destination="Qwb-UW-5cs" id="2vM-oS-6Vr"/>
-                        <segue destination="jeh-V7-L3a" kind="show" identifier="ShowSingleImage" id="2j4-L8-7Fa"/>
+                        <segue destination="jeh-V7-L3a" kind="presentation" identifier="ShowSingleImage" id="2j4-L8-7Fa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -195,22 +195,36 @@
         <!--Single Image View Controller-->
         <scene sceneID="ukD-uC-NOl">
             <objects>
-                <viewController id="jeh-V7-L3a" customClass="SingleImageViewController" customModule="ImageFeed_Storyboard" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="jeh-V7-L3a" customClass="SingleImageViewController" customModule="ImageFeed_Storyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cs4-1Q-Vpt">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WcR-Tj-kdP">
-                                <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0" translatesAutoresizingMaskIntoConstraints="NO" id="WcR-Tj-kdP">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8d-Ku-xOT">
+                                <rect key="frame" x="8" y="8" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="Zc5-7f-Jhs"/>
+                                    <constraint firstAttribute="height" constant="48" id="c3r-F0-c0Q"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="Backward"/>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="jeh-V7-L3a" eventType="touchUpInside" id="ENk-nb-Sfx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="48S-we-gmg"/>
                         <color key="backgroundColor" name="bgColor"/>
                         <constraints>
-                            <constraint firstItem="48S-we-gmg" firstAttribute="trailing" secondItem="WcR-Tj-kdP" secondAttribute="trailing" id="QYM-dF-i6I"/>
-                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="bottom" secondItem="48S-we-gmg" secondAttribute="bottom" id="TVe-KN-KRo"/>
-                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="leading" secondItem="48S-we-gmg" secondAttribute="leading" id="TcR-L6-lDg"/>
-                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="top" secondItem="48S-we-gmg" secondAttribute="top" id="eCN-MA-iU3"/>
+                            <constraint firstAttribute="trailing" secondItem="WcR-Tj-kdP" secondAttribute="trailing" id="QYM-dF-i6I"/>
+                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="bottom" secondItem="Cs4-1Q-Vpt" secondAttribute="bottom" id="TVe-KN-KRo"/>
+                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="leading" secondItem="Cs4-1Q-Vpt" secondAttribute="leading" id="TcR-L6-lDg"/>
+                            <constraint firstItem="w8d-Ku-xOT" firstAttribute="leading" secondItem="48S-we-gmg" secondAttribute="leading" constant="8" id="U7y-Dm-YIx"/>
+                            <constraint firstItem="w8d-Ku-xOT" firstAttribute="top" secondItem="48S-we-gmg" secondAttribute="top" constant="8" id="ZW3-8j-w9O"/>
+                            <constraint firstItem="WcR-Tj-kdP" firstAttribute="top" secondItem="Cs4-1Q-Vpt" secondAttribute="top" id="eCN-MA-iU3"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="YgR-1O-MbI"/>
@@ -249,6 +263,7 @@
     </scenes>
     <resources>
         <image name="0" width="1600" height="1059"/>
+        <image name="Backward" width="24" height="24"/>
         <image name="Exit" width="24" height="24"/>
         <image name="HeartOn" width="42" height="42"/>
         <image name="ProfileA" width="30" height="30"/>
