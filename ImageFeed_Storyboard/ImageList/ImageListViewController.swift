@@ -9,6 +9,7 @@ import UIKit
 
 class ImageListViewController: UIViewController {
 
+    private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private let photosNames: [String] = Array(0..<20).map{"\($0)"}
     
     @IBOutlet private var tableView: UITableView!
@@ -32,13 +33,29 @@ class ImageListViewController: UIViewController {
         let likedImage = isLiked ? UIImage(named: "HeartOn") : UIImage(named: "HeartOff")
         cell.likeButton.setImage(likedImage, for: .normal)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == showSingleImageSegueIdentifier {
+            guard
+                let viewController = segue.destination as? SingleImageViewController,
+                let indexPath = sender as? IndexPath
+            else {
+                assertionFailure("Invalid segue destination")
+                return
+            }
+            let image = UIImage(named: photosNames[indexPath.row])
+            viewController.image = image
+        } else {
+            super.prepare(for: segue, sender: sender)
+        }
+    }
 
 }
 
 extension ImageListViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: showSingleImageSegueIdentifier, sender: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

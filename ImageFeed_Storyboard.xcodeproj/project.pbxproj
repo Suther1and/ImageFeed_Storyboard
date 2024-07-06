@@ -16,6 +16,7 @@
 		B14F49552C39646D00ACA29A /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49542C39646D00ACA29A /* ImageListCell.swift */; };
 		B14F495A2C39678C00ACA29A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49592C39678C00ACA29A /* DateFormatter.swift */; };
 		B14F495D2C39791C00ACA29A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F495C2C39791C00ACA29A /* ProfileViewController.swift */; };
+		B197C5332C39A69E008ACC8B /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B197C5322C39A69E008ACC8B /* SingleImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		B14F49542C39646D00ACA29A /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		B14F49592C39678C00ACA29A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		B14F495C2C39791C00ACA29A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B197C5322C39A69E008ACC8B /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		B14F493F2C3960F400ACA29A /* ImageFeed_Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B197C5312C39A68C008ACC8B /* SingleImage */,
 				B14F495B2C39790900ACA29A /* Profile */,
 				B14F49582C39677F00ACA29A /* Helpers */,
 				B14F49402C3960F400ACA29A /* AppDelegate.swift */,
@@ -98,6 +101,14 @@
 				B14F495C2C39791C00ACA29A /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		B197C5312C39A68C008ACC8B /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				B197C5322C39A69E008ACC8B /* SingleImageViewController.swift */,
+			);
+			path = SingleImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				B14F495D2C39791C00ACA29A /* ProfileViewController.swift in Sources */,
 				B14F49452C3960F400ACA29A /* ImageListViewController.swift in Sources */,
 				B14F49552C39646D00ACA29A /* ImageListCell.swift in Sources */,
+				B197C5332C39A69E008ACC8B /* SingleImageViewController.swift in Sources */,
 				B14F49412C3960F400ACA29A /* AppDelegate.swift in Sources */,
 				B14F49432C3960F400ACA29A /* SceneDelegate.swift in Sources */,
 				B14F495A2C39678C00ACA29A /* DateFormatter.swift in Sources */,
