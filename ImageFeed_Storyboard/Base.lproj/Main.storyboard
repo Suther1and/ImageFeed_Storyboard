@@ -90,14 +90,14 @@
                             <constraint firstItem="Qwb-UW-5cs" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="xig-yi-5Ua"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="TableA" id="Lgg-Zc-2fU"/>
+                    <navigationItem key="navigationItem" id="aey-e1-xsc"/>
                     <connections>
                         <outlet property="tableView" destination="Qwb-UW-5cs" id="2vM-oS-6Vr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1028.2442748091603" y="3.5211267605633805"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="FHY-z9-Xva">
@@ -107,9 +107,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="bgColor"/>
+                        </tabBarAppearance>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="qMj-BK-eVq"/>
+                        <segue destination="oud-RA-nMG" kind="relationship" relationship="viewControllers" id="qMj-BK-eVq"/>
                         <segue destination="FPm-Ys-JTQ" kind="relationship" relationship="viewControllers" id="ZZY-7M-X0Z"/>
                     </connections>
                 </tabBarController>
@@ -186,6 +190,30 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="acu-SU-qKX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="82" y="661"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kdU-g2-UwI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oud-RA-nMG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="TableA" id="Lgg-Zc-2fU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oLf-X7-1pN">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" name="bgColor"/>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="srT-t1-01t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BTh-9o-GnN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="101.5267175572519" y="3.5211267605633805"/>
         </scene>
     </scenes>
     <resources>
