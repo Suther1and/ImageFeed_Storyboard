@@ -35,6 +35,7 @@ class ProfileViewController: UIViewController {
         setupConstraints()
 
      }
+    
     //MARK: - Private UI-Methods
     private func createLabel(text: String, color: UIColor, font: UIFont) -> UILabel {
         {

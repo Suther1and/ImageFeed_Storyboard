@@ -64,16 +64,12 @@
 		B14F493F2C3960F400ACA29A /* ImageFeed_Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B197C5312C39A68C008ACC8B /* SingleImage */,
-				B14F495B2C39790900ACA29A /* Profile */,
 				B14F49582C39677F00ACA29A /* Helpers */,
-				B14F49402C3960F400ACA29A /* AppDelegate.swift */,
-				B14F49422C3960F400ACA29A /* SceneDelegate.swift */,
-				B14F49462C3960F400ACA29A /* Main.storyboard */,
-				B14F49492C3960F600ACA29A /* Assets.xcassets */,
-				B14F494B2C3960F600ACA29A /* LaunchScreen.storyboard */,
-				B14F494E2C3960F600ACA29A /* Info.plist */,
 				B14F49572C39649700ACA29A /* ImageList */,
+				B14F494E2C3960F600ACA29A /* Info.plist */,
+				B14F495B2C39790900ACA29A /* Profile */,
+				B17E15332C3ADD0A0001EC01 /* Resources */,
+				B197C5312C39A68C008ACC8B /* SingleImage */,
 			);
 			path = ImageFeed_Storyboard;
 			sourceTree = "<group>";
@@ -101,6 +97,18 @@
 				B14F495C2C39791C00ACA29A /* ProfileViewController.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		B17E15332C3ADD0A0001EC01 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B14F49402C3960F400ACA29A /* AppDelegate.swift */,
+				B14F49422C3960F400ACA29A /* SceneDelegate.swift */,
+				B14F49462C3960F400ACA29A /* Main.storyboard */,
+				B14F49492C3960F600ACA29A /* Assets.xcassets */,
+				B14F494B2C3960F600ACA29A /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		B197C5312C39A68C008ACC8B /* SingleImage */ = {

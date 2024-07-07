@@ -9,19 +9,25 @@ import UIKit
 
 class ImageListViewController: UIViewController {
 
+    //MARK: - Private Properties
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
     private let photosNames: [String] = Array(0..<20).map{"\($0)"}
     
+    //MARK: - @IBOutlets
     @IBOutlet private var tableView: UITableView!
+    
+    //MARK: - LifeCycle
     override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.rowHeight = 200
-        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-        
+    super.viewDidLoad()
+       tableViewSetup()
     }
 
-    
-    func configCell(for cell: ImageListCell, with indexPath: IndexPath) {
+    //MARK: - Private Methods
+    private func tableViewSetup() {
+        tableView.rowHeight = 200
+        tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+    }
+    private func configCell(for cell: ImageListCell, with indexPath: IndexPath) {
         guard let image = UIImage(named: photosNames[indexPath.row]) else {
             return
         }
@@ -52,6 +58,11 @@ class ImageListViewController: UIViewController {
 
 }
 
+//MARK: - Extensions
+
+
+
+//MARK: - TableViewDelegate
 extension ImageListViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -72,6 +83,7 @@ extension ImageListViewController: UITableViewDelegate{
     }
 }
 
+//MARK: - TableViewDataSource
 extension ImageListViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

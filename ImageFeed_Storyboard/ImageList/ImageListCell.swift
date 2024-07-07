@@ -8,14 +8,17 @@
 import UIKit
 
 final class ImageListCell: UITableViewCell {
+    
+    //MARK: - Properties
+    static let reuseIdentifier = "ImageListCell"
+    
+    //MARK: - @IBActions
     @IBAction func likeAction(_ sender: UIButton) {
     }
     
+    //MARK: - @IBOutlets
     @IBOutlet var likeButton: UIButton!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var cellImage: UIImageView!
     
-    
-    
-    static let reuseIdentifier = "ImageListCell"
 }
