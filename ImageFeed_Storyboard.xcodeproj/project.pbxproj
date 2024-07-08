@@ -15,6 +15,8 @@
 		B14F494D2C3960F600ACA29A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B14F494C2C3960F600ACA29A /* Base */; };
 		B14F49552C39646D00ACA29A /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49542C39646D00ACA29A /* ImageListCell.swift */; };
 		B14F495A2C39678C00ACA29A /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49592C39678C00ACA29A /* DateFormatter.swift */; };
+		B14F495D2C39791C00ACA29A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F495C2C39791C00ACA29A /* ProfileViewController.swift */; };
+		B197C5332C39A69E008ACC8B /* SingleImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B197C5322C39A69E008ACC8B /* SingleImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		B14F494E2C3960F600ACA29A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B14F49542C39646D00ACA29A /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		B14F49592C39678C00ACA29A /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		B14F495C2C39791C00ACA29A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B197C5322C39A69E008ACC8B /* SingleImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,13 +65,11 @@
 			isa = PBXGroup;
 			children = (
 				B14F49582C39677F00ACA29A /* Helpers */,
-				B14F49402C3960F400ACA29A /* AppDelegate.swift */,
-				B14F49422C3960F400ACA29A /* SceneDelegate.swift */,
-				B14F49462C3960F400ACA29A /* Main.storyboard */,
-				B14F49492C3960F600ACA29A /* Assets.xcassets */,
-				B14F494B2C3960F600ACA29A /* LaunchScreen.storyboard */,
-				B14F494E2C3960F600ACA29A /* Info.plist */,
 				B14F49572C39649700ACA29A /* ImageList */,
+				B14F494E2C3960F600ACA29A /* Info.plist */,
+				B14F495B2C39790900ACA29A /* Profile */,
+				B17E15332C3ADD0A0001EC01 /* Resources */,
+				B197C5312C39A68C008ACC8B /* SingleImage */,
 			);
 			path = ImageFeed_Storyboard;
 			sourceTree = "<group>";
@@ -87,6 +89,34 @@
 				B14F49592C39678C00ACA29A /* DateFormatter.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B14F495B2C39790900ACA29A /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B14F495C2C39791C00ACA29A /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B17E15332C3ADD0A0001EC01 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B14F49402C3960F400ACA29A /* AppDelegate.swift */,
+				B14F49422C3960F400ACA29A /* SceneDelegate.swift */,
+				B14F49462C3960F400ACA29A /* Main.storyboard */,
+				B14F49492C3960F600ACA29A /* Assets.xcassets */,
+				B14F494B2C3960F600ACA29A /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B197C5312C39A68C008ACC8B /* SingleImage */ = {
+			isa = PBXGroup;
+			children = (
+				B197C5322C39A69E008ACC8B /* SingleImageViewController.swift */,
+			);
+			path = SingleImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -160,8 +190,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B14F495D2C39791C00ACA29A /* ProfileViewController.swift in Sources */,
 				B14F49452C3960F400ACA29A /* ImageListViewController.swift in Sources */,
 				B14F49552C39646D00ACA29A /* ImageListCell.swift in Sources */,
+				B197C5332C39A69E008ACC8B /* SingleImageViewController.swift in Sources */,
 				B14F49412C3960F400ACA29A /* AppDelegate.swift in Sources */,
 				B14F49432C3960F400ACA29A /* SceneDelegate.swift in Sources */,
 				B14F495A2C39678C00ACA29A /* DateFormatter.swift in Sources */,
