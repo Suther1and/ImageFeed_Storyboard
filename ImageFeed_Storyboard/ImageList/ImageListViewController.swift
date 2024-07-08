@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageListViewController: UIViewController {
+final class ImageListViewController: UIViewController {
 
     //MARK: - Private Properties
     private let showSingleImageSegueIdentifier = "ShowSingleImage"
@@ -18,13 +18,12 @@ class ImageListViewController: UIViewController {
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
-    super.viewDidLoad()
-       tableViewSetup()
+        super.viewDidLoad()
+        tableViewSetup()
     }
 
     //MARK: - Private Methods
     private func tableViewSetup() {
-        tableView.rowHeight = 200
         tableView.contentInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
     }
     private func configCell(for cell: ImageListCell, with indexPath: IndexPath) {
@@ -35,8 +34,7 @@ class ImageListViewController: UIViewController {
         let date = Date()
         cell.dateLabel.text = date.dateTimeString
         
-        let isLiked = indexPath.row % 2 == 0
-        let likedImage = isLiked ? UIImage(named: "HeartOn") : UIImage(named: "HeartOff")
+        let likedImage = UIImage(named: indexPath.row % 2 == 0 ? "HeartOn" : "HeartOff")
         cell.likeButton.setImage(likedImage, for: .normal)
     }
     
