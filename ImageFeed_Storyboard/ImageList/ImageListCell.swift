@@ -14,7 +14,7 @@ final class ImageListCell: UITableViewCell {
     
     //MARK: - @IBActions
     @IBAction func likeAction(_ sender: UIButton) {
-        //TODO: - Обработать логику нажатия на кнопку
+        //TODO: - Обработать логику нажатия на кнопку 
     }
     
     //MARK: - @IBOutlets
