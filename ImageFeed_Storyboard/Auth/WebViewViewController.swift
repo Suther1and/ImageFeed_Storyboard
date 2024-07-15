@@ -31,6 +31,23 @@ final class WebViewViewController: UIViewController {
         loadAuthView()
       }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        webView.addObserver(
+            self,
+            forKeyPath: #keyPath(WKWebView.estimatedProgress),
+            context: nil)
+        updateProgress()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        webView.removeObserver(
+            self,
+            forKeyPath: #keyPath(WKWebView.estimatedProgress),
+            context: nil
+        )}
+    
     //MARK: - Private Methods
     private func code(from navigationAction: WKNavigationAction) -> String? {
         if
