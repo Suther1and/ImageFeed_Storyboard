@@ -20,6 +20,7 @@
 		B1A80E5C2C4542AE00EA3200 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A80E5B2C4542AE00EA3200 /* Constants.swift */; };
 		B1A80E5F2C45493200EA3200 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A80E5E2C45493200EA3200 /* AuthViewController.swift */; };
 		B1A80E612C454E0500EA3200 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A80E602C454E0500EA3200 /* WebViewViewController.swift */; };
+		B1A80E632C455B1F00EA3200 /* WebViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A80E622C455B1F00EA3200 /* WebViewControllerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		B1A80E5B2C4542AE00EA3200 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B1A80E5E2C45493200EA3200 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		B1A80E602C454E0500EA3200 /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
+		B1A80E622C455B1F00EA3200 /* WebViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewControllerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			children = (
 				B1A80E5E2C45493200EA3200 /* AuthViewController.swift */,
 				B1A80E602C454E0500EA3200 /* WebViewViewController.swift */,
+				B1A80E622C455B1F00EA3200 /* WebViewControllerDelegate.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 				B1A80E5C2C4542AE00EA3200 /* Constants.swift in Sources */,
 				B14F49432C3960F400ACA29A /* SceneDelegate.swift in Sources */,
 				B1A80E5F2C45493200EA3200 /* AuthViewController.swift in Sources */,
+				B1A80E632C455B1F00EA3200 /* WebViewControllerDelegate.swift in Sources */,
 				B14F495A2C39678C00ACA29A /* DateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

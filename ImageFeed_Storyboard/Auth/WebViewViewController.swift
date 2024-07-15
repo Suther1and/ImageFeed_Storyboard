@@ -10,7 +10,7 @@ import WebKit
 
  
 
-class WebViewViewController: UIViewController {
+final class WebViewViewController: UIViewController {
 
     //MARK: - @IBOutlets
     @IBOutlet var webView: WKWebView!
@@ -19,6 +19,8 @@ class WebViewViewController: UIViewController {
     enum WebViewConstants {
         static let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
     }
+    
+    weak var delegate: WebViewControllerDelegate?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -73,7 +75,7 @@ extension WebViewViewController: WKNavigationDelegate {
         decisionHandler: @escaping (WKNavigationActionPolicy) -> Void
     ) {
         if let code = code(from: navigationAction) {
-            //TODO: process code
+            delegate?.webViewController(self, didAuthenticateWithCode: code)
             decisionHandler(.cancel)
         }else{
             decisionHandler(.allow)
