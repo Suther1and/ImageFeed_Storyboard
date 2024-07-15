@@ -43,7 +43,7 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewControllerDelegate {
     
     func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode: String) {
-        //TODO: code
+        //TODO: code process
     }
     
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {

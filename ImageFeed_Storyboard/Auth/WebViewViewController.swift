@@ -11,8 +11,10 @@ import WebKit
  
 
 final class WebViewViewController: UIViewController {
-
+    
     //MARK: - @IBOutlets
+    @IBOutlet var progressView: UIProgressView!
+    
     @IBOutlet var webView: WKWebView!
      
     //MARK: - Private Properties
@@ -42,6 +44,24 @@ final class WebViewViewController: UIViewController {
         } else {
             return nil
         }
+    }
+    
+    override func observeValue(
+        forKeyPath keyPath: String?,
+        of object: Any?,
+        change: [NSKeyValueChangeKey : Any]?,
+        context: UnsafeMutableRawPointer?
+    ){
+        if keyPath == #keyPath(WKWebView.estimatedProgress) {
+            updateProgress()
+        }else{
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        }
+    }
+    
+    private func updateProgress() {
+        progressView.progress = Float(webView.estimatedProgress)
+        progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
     
    //MARK: - URLComponents Setup
