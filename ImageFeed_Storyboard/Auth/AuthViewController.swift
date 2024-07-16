@@ -7,14 +7,18 @@
 
 import UIKit
 
+protocol AuthViewControllerDelegate: AnyObject {
+    func didAuthenticate(_ vc: AuthViewController)
+}
+
 final class AuthViewController: UIViewController {
 
     //MARK: - Private Properties
     private let showWebViewSegueIdentifier = "ShowWebView"
-    private let oauth2Service = OAuth2Service.shared
+    private let oAuth2Service = OAuth2Service.shared
     private let tokenStorage = OAuth2TokenStorage()
     
-    weak var delegate: auth
+    weak var delegate: AuthViewControllerDelegate?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -47,14 +51,9 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewControllerDelegate {
     
     func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
-        oauth2Service.fetchOAuthToken(code: code)  { result in
-            switch result {
-            case .success(let token):
-                self.tokenStorage.token = token
-                self.delegate?.authViewController(self, didAuthenticateWithCode: token)
-            case .failure(let error):
-                print("Error: \(error.localizedDescription)")
-            }
+        vc.dismiss(animated: true)
+        oAuth2Service.fetchOAuthToken(code: code) { result in
+        // TODO: разобрать ответ через switch
         }
     }
     
