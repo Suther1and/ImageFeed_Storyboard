@@ -11,6 +11,10 @@ final class AuthViewController: UIViewController {
 
     //MARK: - Private Properties
     private let showWebViewSegueIdentifier = "ShowWebView"
+    private let oauth2Service = OAuth2Service.shared
+    private let tokenStorage = OAuth2TokenStorage()
+    
+    weak var delegate: auth
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
@@ -42,8 +46,16 @@ final class AuthViewController: UIViewController {
 //MARK: - Extensions
 extension AuthViewController: WebViewControllerDelegate {
     
-    func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode: String) {
-        //TODO: code process
+    func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
+        oauth2Service.fetchOAuthToken(code: code)  { result in
+            switch result {
+            case .success(let token):
+                self.tokenStorage.token = token
+                self.delegate?.authViewController(self, didAuthenticateWithCode: token)
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+            }
+        }
     }
     
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {

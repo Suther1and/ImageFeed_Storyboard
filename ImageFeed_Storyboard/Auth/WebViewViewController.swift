@@ -8,7 +8,10 @@
 import UIKit
 import WebKit
 
- 
+protocol WebViewControllerDelegate: AnyObject {
+    func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode: String)
+    func webViewViewControllerDidCancel(_ vc: WebViewViewController)
+}
 
 final class WebViewViewController: UIViewController {
     
