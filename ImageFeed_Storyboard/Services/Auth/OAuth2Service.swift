@@ -9,10 +9,9 @@ import Foundation
 
 final class OAuth2Service {
     static let shared = OAuth2Service()
-    let storage = OAuth2TokenStorage()
+    private let storage = OAuth2TokenStorage()
 
-    private init() {
-    }
+    private init() {}
     
     func makeOAuthTokenRequest(code: String) -> URLRequest? {
         guard let baseUrl = URL(string: "https://unsplash.com") else {

@@ -7,6 +7,7 @@
 
 import Foundation
 
+//TODO: Сделать конвертацию в camelCase
 struct OAuthTokenResponseBody: Decodable {
     let accessToken: String
     let tokenType: String

@@ -7,10 +7,11 @@
 
 import UIKit
 
-class SplashViewController: UIViewController {
+final class SplashViewController: UIViewController {
     
     //MARK: - Private Properties
-    private let storage = OAuth2TokenStorage()
+    private let oAuth2Storage = OAuth2TokenStorage()
+    private let oAuth2Service = OAuth2Service.shared
     private let showAuthenticationScreenSegueIdentifier = "ShowAuth"
     
     //MARK: - LifeCycle
@@ -35,11 +36,13 @@ class SplashViewController: UIViewController {
     }
     
     private func tokenCheck() {
-        if let token = storage.token {
+        if oAuth2Storage.token != nil {
+            switchToTabBarController()
         } else {
             performSegue(withIdentifier: showAuthenticationScreenSegueIdentifier, sender: nil)
         }
     }
+    
     
 }
 
@@ -64,10 +67,24 @@ extension SplashViewController {
 
 extension SplashViewController: AuthViewControllerDelegate {
     
-    func didAuthenticate(_ vc: AuthViewController) {
-        vc.dismiss(animated: true)
-        switchToTabBarController()
+    func didAuthenticate(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
+        vc.dismiss(animated: true) { [weak self]  in
+            guard let self = self else { return }
+            self.fetchToken(code)
+        }
     }
     
-    
+    private func fetchToken(_ code: String){
+        oAuth2Service.fetchOAuthToken(code: code) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let token):
+                self.switchToTabBarController()
+            case .failure(let error):
+                print("Error: \(error.localizedDescription)")
+                //TODO: [Sprint 11]
+                break
+            }
+        }
+    }
 }

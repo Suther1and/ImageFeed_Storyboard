@@ -21,10 +21,6 @@ final class WebViewViewController: UIViewController {
     @IBOutlet var webView: WKWebView!
      
     //MARK: - Private Properties
-    enum WebViewConstants {
-        static let unsplashAuthorizeURLString = "https://unsplash.com/oauth/authorize"
-    }
-    
     weak var delegate: WebViewControllerDelegate?
     
     //MARK: - LifeCycle
@@ -49,7 +45,8 @@ final class WebViewViewController: UIViewController {
             self,
             forKeyPath: #keyPath(WKWebView.estimatedProgress),
             context: nil
-        )}
+        )
+    }
     
     //MARK: - Private Methods
     private func code(from navigationAction: WKNavigationAction) -> String? {
@@ -74,7 +71,7 @@ final class WebViewViewController: UIViewController {
     ){
         if keyPath == #keyPath(WKWebView.estimatedProgress) {
             updateProgress()
-        }else{
+        } else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
@@ -86,7 +83,7 @@ final class WebViewViewController: UIViewController {
     
    //MARK: - URLComponents Setup
     private func loadAuthView() {
-        guard var urlComponents = URLComponents(string: WebViewConstants.unsplashAuthorizeURLString) else {
+        guard var urlComponents = URLComponents(string: Constants.unsplashAuthorizeURLString) else {
             print("error in getting url string")
             return
         }
