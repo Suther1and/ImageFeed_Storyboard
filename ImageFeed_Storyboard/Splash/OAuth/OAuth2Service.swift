@@ -16,11 +16,8 @@ final class OAuth2Service {
     private var task: URLSessionTask?
     private var lastCode: String?
     
-    
-    
     //MARK: - Initializer
     private init() {}
-    
     
     //MARK: - Methods
     func makeOAuthTokenRequest(code: String) throws -> URLRequest? {

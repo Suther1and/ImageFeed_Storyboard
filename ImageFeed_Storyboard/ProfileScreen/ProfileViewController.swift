@@ -103,20 +103,6 @@ final class ProfileViewController: UIViewController {
             }
     }
     
-    //MARK: - Private UI-Methods
-    private func createLabel(
-        text: String,
-        color: UIColor,
-        font: UIFont
-    ) -> UILabel {
-        let label = UILabel()
-        label.text = text
-        label.font = font
-        label.textColor = color
-        return label
-    }
-    
-    //MARK: - Private Methods
     func clearCookies() {
         let cookieStorage = HTTPCookieStorage.shared
         if let cookies = cookieStorage.cookies {
@@ -144,6 +130,19 @@ final class ProfileViewController: UIViewController {
         let viewController = SplashViewController()
         viewController.modalPresentationStyle = .fullScreen
         present(viewController, animated: true, completion: nil)
+    }
+    
+    //MARK: - Private UI-Methods
+    private func createLabel(
+        text: String,
+        color: UIColor,
+        font: UIFont
+    ) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.font = font
+        label.textColor = color
+        return label
     }
     
     //MARK: - UI-SetUp

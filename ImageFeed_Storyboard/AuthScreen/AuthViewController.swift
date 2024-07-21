@@ -15,7 +15,6 @@ final class AuthViewController: UIViewController {
 
     //MARK: - Private Properties
     weak var delegate: AuthViewControllerDelegate?
-    private let ShowWebViewSegueIdentifier = "ShowWebView"
     
     //MARK: - UI Properties
     private let logoImageView = {

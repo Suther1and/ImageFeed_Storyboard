@@ -20,6 +20,7 @@ final class TabBarController: UITabBarController {
             image: UIImage(named: "ProfileA"),
             selectedImage: nil
         )
+        
         imagesListViewController.tabBarItem = UITabBarItem(
             title: "",
             image: UIImage(named: "TableA"),
