@@ -6,10 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class ProfileViewController: UIViewController {
     
     //MARK: - Private Properties
+    private let profileService = ProfileService.shared
+    private var profileImageServiceObserver: NSObjectProtocol?
+    
     private lazy var nameLabel = createLabel(
         text: "Екатерина Новикова",
         color: .white,
@@ -43,11 +47,49 @@ final class ProfileViewController: UIViewController {
    
     //MARK: - LifeCycle
     override func viewDidLoad() {
+        //TODO: Добавить fetchProfile и обновить лейблы
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        setupObserver()
      }
     
+    
+    //MARK: - Private Methods
+    func updateProfileDetails(profile: Profile) {
+        //TODO: Добавить считывание лейблов профиля 
+    }
+    private func setupObserver() {
+        profileImageServiceObserver = NotificationCenter.default
+            .addObserver(forName: ProfileImageService.didChangeNotification,
+                         object: nil, // nil чтобы получать уведомление от любых источников
+                         queue: .main
+            ) { [weak self] _ in
+                guard let self = self else { return }
+                self.updateAvatar()
+            }
+        updateAvatar()
+    }
+    
+    private func updateAvatar() {
+        guard
+            let profileImageURL = ProfileImageService.shared.profileImageURL,
+            let url = URL(string: profileImageURL)
+        else { return }
+        let processor = RoundCornerImageProcessor(cornerRadius: 20)
+        profilePic.kf.indicatorType = .activity
+        profilePic.kf.setImage(
+            with: url,
+            placeholder: UIImage(named: "UserpicStub"),
+            options: [.processor(processor)]) { result in
+                switch result {
+                case .success(let value):
+                    print(value.image)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+    }
     //MARK: - Private UI-Methods
     private func createLabel(
         text: String,
