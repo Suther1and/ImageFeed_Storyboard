@@ -12,7 +12,8 @@ enum Constants {
     static let secretKey = "dnhw_pBHdBE9w8KFnFcBDOsGO7OW1tFYd8oUnsTTCwc"
     static let redirectURI = "urn:ietf:wg:oauth:2.0:oob"
     static let accessScope = "public+read_user+write_likes"
-    static let defaultBaseURL = URL(string: "https://api.unsplash.com/")
+    static let defaultBaseURL = URL(string: "https://api.unsplash.com")
+    static let tokenURLString = "https://unsplash.com/oauth/token"
 }
 
 enum WebViewConstants {
@@ -28,6 +29,7 @@ enum ProfileConstants {
 enum AuthServiceErrors: Error {
     case invalidRequest
     case invalidResponse
+    case invalidUrl
 }
 
 enum ProfileServiceErrors: Error {

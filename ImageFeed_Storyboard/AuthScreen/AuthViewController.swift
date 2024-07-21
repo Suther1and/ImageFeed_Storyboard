@@ -15,11 +15,35 @@ final class AuthViewController: UIViewController {
 
     //MARK: - Private Properties
     weak var delegate: AuthViewControllerDelegate?
+    private let ShowWebViewSegueIdentifier = "ShowWebView"
+    
+    //MARK: - UI Properties
+    private let logoImageView = {
+        let img = UIImageView()
+        img.image = UIImage(named: "AuthLogo")
+        return img
+    }()
+    
+    private let loginButton = {
+        let button = UIButton(type: .system)
+        button.backgroundColor = .white
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+        button.setTitle("Войти", for: .normal)
+        button.setTitleColor(.ypBlack, for: .normal)
+        button.layer.cornerRadius = 16
+        button.layer.masksToBounds = true
+        
+        return button
+    }()
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpBackButton()
+        setupViews()
+        setupConstraints()
+        loginButton.addTarget(self, action: #selector(didTapLoginButton), for: .touchUpInside)
+
      }
     
     //MARK: - Private Methods
@@ -27,9 +51,41 @@ final class AuthViewController: UIViewController {
         navigationController?.navigationBar.backIndicatorImage = UIImage(named: "Backward 1")
         navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "Backward 1")
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
-        navigationItem.backBarButtonItem?.tintColor = UIColor(named: "bgColor")
+        navigationItem.backBarButtonItem?.tintColor = .ypBlack
+    }
+    
+    @objc private func didTapLoginButton() {
+        let viewController = WebViewViewController()
+        viewController.delegate = self
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
     }
 
+    //MARK: - UI Methods
+    func setupViews() {
+        view.backgroundColor = .ypBlack
+        [logoImageView,
+        loginButton].forEach{
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
+    }
+    
+    func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: 60),
+            logoImageView.heightAnchor.constraint(equalToConstant: 60),
+            
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            loginButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -124),
+            loginButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            loginButton.heightAnchor.constraint(equalToConstant: 48)
+        ])
+    }
 }
 
 //MARK: - Extensions

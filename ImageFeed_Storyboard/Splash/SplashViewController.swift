@@ -34,10 +34,9 @@ final class SplashViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         tokenCheck()
-//        profileImageService.fetchProfileImageURL(username: username) { _ in }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNeedsStatusBarAppearanceUpdate()
@@ -54,7 +53,7 @@ final class SplashViewController: UIViewController {
     
     private func tokenCheck() {
         if let token = oAuth2Storage.token {
-            fetchProfile(token)
+            fetchProfile(token: token)
         } else {
             let vc = AuthViewController()
             vc.delegate = self
@@ -68,7 +67,7 @@ final class SplashViewController: UIViewController {
     
     //MARK: - UI-Methods
     func setupViews() {
-        view.backgroundColor = UIColor(named: "bgColor")
+        view.backgroundColor = .ypBlack
         [logoImageView].forEach{
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
@@ -97,11 +96,11 @@ extension SplashViewController: AuthViewControllerDelegate {
     func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String) {
         vc.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            self.fetchProfile(code)
+            self.fetchOAuthToken(code)
         }
     }
     
-    private func fetchProfile(_ token: String) {
+    private func fetchProfile(token: String) {
         UIBlockingProgressHUD.show()
         profileService.fetchProfile(token) { [weak self] result in
             UIBlockingProgressHUD.dismiss()
@@ -119,7 +118,7 @@ extension SplashViewController: AuthViewControllerDelegate {
     
     private func fetchOAuthToken(_ code: String){
         UIBlockingProgressHUD.show()
-        oAuth2Service.fetchOAuthToken(code) { [weak self] result in
+        oAuth2Service.fetchOAuthToken(code: code) { [weak self] result in
             UIBlockingProgressHUD.dismiss()
             
             guard let self = self else { return }
@@ -127,7 +126,7 @@ extension SplashViewController: AuthViewControllerDelegate {
             switch result {
             case .success:
                 guard let token = oAuth2Storage.token else { return }
-                fetchProfile(token)
+                fetchProfile(token: token)
             case .failure(let error):
                 print("[\(String(describing: self)).\(#function)]: \(AuthServiceErrors.invalidRequest) - Ошибка получения данных профиля, \(error.localizedDescription)")
                 

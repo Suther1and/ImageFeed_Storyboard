@@ -21,7 +21,7 @@ final class ProfileService {
     
     //MARK: - Methods
     func makeProfileInfoURLRequest() throws -> URLRequest? {
-        guard let baseURL = URL(string: ProfileConstants.urlProfilePath) else {
+        guard let baseURL = Constants.defaultBaseURL else {
             throw ProfileServiceErrors.invalidBaseURL
         }
         guard let url = URL(string: "/me", relativeTo: baseURL) else {
@@ -39,10 +39,6 @@ final class ProfileService {
         return request
     }
     
-    
-    
-    
-    
     func fetchProfile(_ token: String, completion: @escaping (Result<Profile, Error>) -> Void) {
         assert(Thread.isMainThread)
         
@@ -54,9 +50,9 @@ final class ProfileService {
         let task = urlSession.objectTask(for: request) { (result: Result<ProfileResult, Error>) in
             switch result {
             case .success(let response):
-                let profile = Profile(username: response.userName, firstName: response.firstName ?? "", lastName: response.lastName ?? "", bio: response.bio)
+                let profile = Profile(username: response.username, firstName: response.firstName, lastName: response.lastName, bio: response.bio)
                 self.profile = profile
-                ProfileImageService.shared.fetchProfileImageURL(username: response.userName) { _ in }
+                ProfileImageService.shared.fetchProfileImageURL(username: response.username) { _ in }
                 completion(.success(profile))
             case .failure(let error):
                 print("[\(String(describing: self)).\(#function)]: \(ProfileServiceErrors.fetchProfileError) - Ошибка получения данных профиля, \(error.localizedDescription)")

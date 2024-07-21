@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import WebKit
 
 final class ProfileViewController: UIViewController {
     
@@ -17,7 +18,7 @@ final class ProfileViewController: UIViewController {
     private lazy var nameLabel = createLabel(
         text: "Екатерина Новикова",
         color: .white,
-        font: UIFont.systemFont(ofSize: 23, weight: .bold)
+        font: UIFont.systemFont(ofSize: 23, weight: .semibold)
     )
     
     private lazy var emailLabel = createLabel(
@@ -35,6 +36,8 @@ final class ProfileViewController: UIViewController {
     private lazy var profilePic = {
         let img = UIImageView()
         img.image = UIImage(named: "Userpic")
+        img.layer.cornerRadius = 35
+        img.clipsToBounds = true
         return img
     }()
     
@@ -44,16 +47,18 @@ final class ProfileViewController: UIViewController {
         btn.tintColor = #colorLiteral(red: 0.9607843137, green: 0.4196078431, blue: 0.4235294118, alpha: 1)
         return btn
     }()
-   
+    
     //MARK: - LifeCycle
     override func viewDidLoad() {
-        //TODO: Добавить fetchProfile и обновить лейблы
         super.viewDidLoad()
         setupViews()
         setupConstraints()
         setupObserver()
         updateAvatar()
-     }
+        updateProfileDetails(profile: profileService.profile)
+        exitButton.addTarget(self, action: #selector(logoutButtonDidTap), for: .touchUpInside)
+        
+    }
     
     
     //MARK: - Private Methods
@@ -65,6 +70,7 @@ final class ProfileViewController: UIViewController {
         self.emailLabel.text = profile.loginName
         self.aboutMeLabel.text = profile.bio
     }
+    
     private func setupObserver() {
         profileImageServiceObserver = NotificationCenter.default
             .addObserver(forName: ProfileImageService.didChangeNotification,
@@ -96,6 +102,7 @@ final class ProfileViewController: UIViewController {
                 }
             }
     }
+    
     //MARK: - Private UI-Methods
     private func createLabel(
         text: String,
@@ -109,13 +116,44 @@ final class ProfileViewController: UIViewController {
         return label
     }
     
+    //MARK: - Private Methods
+    func clearCookies() {
+        let cookieStorage = HTTPCookieStorage.shared
+        if let cookies = cookieStorage.cookies {
+            for cookie in cookies {
+                cookieStorage.deleteCookie(cookie)
+            }
+        }
+    }
+    
+    func clearWebsiteData() {
+        let dataStore = WKWebsiteDataStore.default()
+        let dataTypes = WKWebsiteDataStore.allWebsiteDataTypes()
+        let date = Date(timeIntervalSince1970: 0)
+        
+        dataStore.removeData(ofTypes: dataTypes, modifiedSince: date) {
+            print("Все данные WKWebsiteDataStore были очищены")
+        }
+    }
+    
+    @objc private func logoutButtonDidTap(_ sender: Any) {
+        OAuth2TokenStorage.deleteToken()
+        clearCookies()
+        clearWebsiteData()
+        
+        let viewController = SplashViewController()
+        viewController.modalPresentationStyle = .fullScreen
+        present(viewController, animated: true, completion: nil)
+    }
+    
     //MARK: - UI-SetUp
     private func setupViews(){
+        view.backgroundColor = .ypBlack
         [nameLabel,
-        aboutMeLabel,
-        profilePic,
-        exitButton,
-        emailLabel,].forEach{
+         aboutMeLabel,
+         profilePic,
+         exitButton,
+         emailLabel,].forEach{
             $0.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview($0)
         }

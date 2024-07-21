@@ -9,33 +9,41 @@ import UIKit
 import WebKit
 
 protocol WebViewControllerDelegate: AnyObject {
-    func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode: String)
+    func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String)
     func webViewViewControllerDidCancel(_ vc: WebViewViewController)
 }
 
 final class WebViewViewController: UIViewController {
     
-    //MARK: - @IBOutlets
-    @IBOutlet var progressView: UIProgressView!
-    
-    @IBOutlet var webView: WKWebView!
-     
     //MARK: - Private Properties
     weak var delegate: WebViewControllerDelegate?
     private var estimatedProgressObservation: NSKeyValueObservation?
     
-   
+    
+    //MARK: - UI Properties
+    private let webView: WKWebView = {
+        let webView = WKWebView()
+        return webView
+    }()
+    
+    private let progressView: UIProgressView = {
+        let progress = UIProgressView()
+        progress.progressTintColor = .ypBlack
+        return progress
+    }()
+    
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         webView.navigationDelegate = self
+        
         loadAuthView()
-        setupObserver()
-      }
-    
-    //MARK: - Private Methods
-    private func setupObserver() {
+        updateProgress()
+        setupViews()
+        setupConstraints()
+        
         estimatedProgressObservation = webView.observe(
             \.estimatedProgress,
              options: [],
@@ -45,12 +53,42 @@ final class WebViewViewController: UIViewController {
              })
     }
     
+    //MARK: - UI Methods
+    func setupViews(){
+        view.backgroundColor = .white
+        [webView,
+         progressView].forEach{
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
+        
+    }
+    
+    func setupConstraints(){
+        NSLayoutConstraint.activate([
+            webView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            webView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            webView.topAnchor.constraint(equalTo: view.topAnchor),
+            
+            progressView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            progressView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            progressView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        ])
+        
+    }
+    
+    //MARK: - Private Methods
+    
     private func updateProgress() {
         progressView.progress = Float(webView.estimatedProgress)
         progressView.isHidden = fabs(webView.estimatedProgress - 1.0) <= 0.0001
     }
     
-   //MARK: - URLComponents Setup
+    private func didTapBackButton(_ sender: Any?) {
+        delegate?.webViewViewControllerDidCancel(self)
+    }
+    //MARK: - URLComponents Setup
     private func loadAuthView() {
         guard var urlComponents = URLComponents(string: WebViewConstants.unsplashAuthorizeURLString) else {
             print("error in getting url string")
@@ -71,7 +109,7 @@ final class WebViewViewController: UIViewController {
         let request = URLRequest(url: url)
         webView.load(request)
     }
-
+    
 }
 
 extension WebViewViewController: WKNavigationDelegate {
