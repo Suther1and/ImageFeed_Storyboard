@@ -15,6 +15,7 @@
 		B115AE3D2C4D2E4200A0E7E7 /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115AE3C2C4D2E4200A0E7E7 /* AlertPresenter.swift */; };
 		B115AE632C4D3A7500A0E7E7 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = B115AE622C4D3A7500A0E7E7 /* Kingfisher */; };
 		B115AE662C4D431F00A0E7E7 /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = B115AE652C4D431F00A0E7E7 /* SwiftKeychainWrapper */; };
+		B115AE692C4D45FB00A0E7E7 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B115AE682C4D45FB00A0E7E7 /* TabBarController.swift */; };
 		B14F49412C3960F400ACA29A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49402C3960F400ACA29A /* AppDelegate.swift */; };
 		B14F49432C3960F400ACA29A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49422C3960F400ACA29A /* SceneDelegate.swift */; };
 		B14F49452C3960F400ACA29A /* ImageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14F49442C3960F400ACA29A /* ImageListViewController.swift */; };
@@ -43,6 +44,7 @@
 		B115AE372C4ACBB400A0E7E7 /* ProfileImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageService.swift; sourceTree = "<group>"; };
 		B115AE392C4ACD0E00A0E7E7 /* ProfileImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageModel.swift; sourceTree = "<group>"; };
 		B115AE3C2C4D2E4200A0E7E7 /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
+		B115AE682C4D45FB00A0E7E7 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B14F493D2C3960F400ACA29A /* ImageFeed_Storyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageFeed_Storyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B14F49402C3960F400ACA29A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B14F49422C3960F400ACA29A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 			path = AlertPresenter;
 			sourceTree = "<group>";
 		};
+		B115AE672C4D45EA00A0E7E7 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				B115AE682C4D45FB00A0E7E7 /* TabBarController.swift */,
+			);
+			path = TabBarController;
+			sourceTree = "<group>";
+		};
 		B14F49342C3960F300ACA29A = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 		B14F493F2C3960F400ACA29A /* ImageFeed_Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				B115AE672C4D45EA00A0E7E7 /* TabBarController */,
 				B115AE3B2C4D2E3600A0E7E7 /* AlertPresenter */,
 				B1A80E5D2C45491400EA3200 /* AuthScreen */,
 				B14F49582C39677F00ACA29A /* Helpers */,
@@ -302,6 +313,7 @@
 				B14F49412C3960F400ACA29A /* AppDelegate.swift in Sources */,
 				B1A80E5C2C4542AE00EA3200 /* Constants.swift in Sources */,
 				B115AE382C4ACBB400A0E7E7 /* ProfileImageService.swift in Sources */,
+				B115AE692C4D45FB00A0E7E7 /* TabBarController.swift in Sources */,
 				B1A60DA82C46A8170070C75A /* SplashViewController.swift in Sources */,
 				B1A60DA52C46A2760070C75A /* OAuthTokenStorage.swift in Sources */,
 				B1A60DA32C46A16E0070C75A /* OAuthTokenResponseBody.swift in Sources */,

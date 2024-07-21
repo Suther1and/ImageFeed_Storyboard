@@ -8,15 +8,12 @@
 import UIKit
 
 protocol AuthViewControllerDelegate: AnyObject {
-    func didAuthenticate(_ vc: AuthViewController)
+    func authViewController(_ vc: AuthViewController, didAuthenticateWithCode code: String)
 }
 
 final class AuthViewController: UIViewController {
 
     //MARK: - Private Properties
-    private let showWebViewSegueIdentifier = "ShowWebView"
-  
-    
     weak var delegate: AuthViewControllerDelegate?
     
     //MARK: - LifeCycle
@@ -32,17 +29,6 @@ final class AuthViewController: UIViewController {
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem?.tintColor = UIColor(named: "bgColor")
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == showWebViewSegueIdentifier {
-            guard
-                let webViewViewController = segue.destination as? WebViewViewController
-            else { fatalError("Failed to prepare for \(showWebViewSegueIdentifier)") }
-            webViewViewController.delegate = self
-        } else {
-            super.prepare(for: segue, sender: sender)
-        }
-    }
 
 }
 
@@ -50,11 +36,11 @@ final class AuthViewController: UIViewController {
 extension AuthViewController: WebViewControllerDelegate {
     
     func webViewController(_ vc: WebViewViewController, didAuthenticateWithCode code: String) {
-        delegate?.didAuthenticate(self)
+        delegate?.authViewController(self, didAuthenticateWithCode: code)
     }
     
     func webViewViewControllerDidCancel(_ vc: WebViewViewController) {
-        dismiss(animated: true)
+        vc.dismiss(animated: true)
     }
     
     

@@ -52,12 +52,18 @@ final class ProfileViewController: UIViewController {
         setupViews()
         setupConstraints()
         setupObserver()
+        updateAvatar()
      }
     
     
     //MARK: - Private Methods
-    func updateProfileDetails(profile: Profile) {
-        //TODO: Добавить считывание лейблов профиля 
+    func updateProfileDetails(profile: Profile?) {
+        guard let profile = profile else {
+            return
+        }
+        self.nameLabel.text = profile.name
+        self.emailLabel.text = profile.loginName
+        self.aboutMeLabel.text = profile.bio
     }
     private func setupObserver() {
         profileImageServiceObserver = NotificationCenter.default
