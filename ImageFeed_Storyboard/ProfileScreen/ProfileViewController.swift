@@ -57,9 +57,7 @@ final class ProfileViewController: UIViewController {
         updateAvatar()
         updateProfileDetails(profile: profileService.profile)
         exitButton.addTarget(self, action: #selector(logoutButtonDidTap), for: .touchUpInside)
-        
     }
-    
     
     //MARK: - Private Methods
     func updateProfileDetails(profile: Profile?) {
