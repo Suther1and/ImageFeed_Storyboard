@@ -21,10 +21,10 @@ struct Photo {
         self.id = photo.id
         self.size = CGSize(width: photo.width, height: photo.height)
         self.createdAt = photo.createdAt
-        self.welcomeDescription = photo.description
+        self.welcomeDescription = photo.description ?? ""
         self.thumbImageURL = photo.urls?.thumb ?? ""
         self.largeImageURL = photo.urls?.full ?? ""
-        self.isLiked = photo.isLiked
+        self.isLiked = photo.isLiked ?? false
     }
 }
 
@@ -34,7 +34,7 @@ struct PhotoResult: Codable {
     let height: CGFloat
     let width: CGFloat
     let description: String?
-    let isLiked: Bool
+    let isLiked: Bool?
     let urls: URLResult?
 }
 

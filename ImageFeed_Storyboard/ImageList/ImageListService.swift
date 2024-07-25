@@ -10,7 +10,7 @@ import Foundation
 final class ImageListService {
     
     static let shared = ImageListService()
-    private init() {}
+    init() {}
     
     //MARK: - Private Properties
     private (set) var photos: [Photo] = []
@@ -52,7 +52,7 @@ final class ImageListService {
     
     func fetchPhotosNextPage() {
         assert(Thread.isMainThread)
-        if task != nil { return }
+        guard task == nil else { return }
         let nextPage = (lastLoadedPage ?? 0) + 1
         
         guard let request = try? makePhotosNextPageRequest(page: nextPage, perPage: perPage) else {
