@@ -22,6 +22,8 @@ final class ImageListViewController: UIViewController {
         super.viewDidLoad()
         tableViewSetup()
         notify()
+        imageListService.fetchPhotosNextPage()
+
     }
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -44,7 +46,6 @@ final class ImageListViewController: UIViewController {
     
     private func notify() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTableViewAnimated), name: ImageListService.didChangeNotification, object: nil)
-        imageListService.fetchPhotosNextPage()
     }
     
     private func tableViewSetup() {
