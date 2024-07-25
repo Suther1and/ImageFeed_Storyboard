@@ -22,4 +22,9 @@ final class ImageListCell: UITableViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var cellImage: UIImageView!
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cellImage.kf.cancelDownloadTask()
+        cellImage.image = nil
+    }
 }
