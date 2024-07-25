@@ -35,3 +35,4 @@ struct Profile {
         self.bio = bio
     }
 }
+

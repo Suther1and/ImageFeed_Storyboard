@@ -46,3 +46,11 @@ enum ProfileImageServiceErrors: Error {
     case invalidRequest
     case fetchProfileError
 }
+
+enum  ImageListErrors: Error {
+    case invalidBaseURL
+    case invalidURL
+    case tokenError
+    case invalidRequest
+    case fetchProfileError
+}

@@ -93,5 +93,10 @@ extension ImageListViewController: UITableViewDataSource{
         return imageListCell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == photosNames.count {
+            //TODO: Добавить функцию ImageListService.fetchPhotosNextPage
+        }
+    }
     
 }

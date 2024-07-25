@@ -19,7 +19,7 @@ final class ProfileImageService {
     
     //MARK: - Methods
     func makeProfileImageRequest(username: String) throws -> URLRequest? {
-        guard let baseURL = Constants.defaultBaseURL else {
+         let baseURL = Constants.defaultBaseURL else {
             throw ProfileImageServiceErrors.invalidBaseURL
         }
         guard let url = URL(string: "/users/\(username)", relativeTo: baseURL) else {
